@@ -5,6 +5,9 @@ from game import params
 class Tube(pygame.sprite.Sprite):
     def __init__(self, center, y):
         pygame.sprite.Sprite.__init__(self)
+        
+        # Alex: does this thing load an image every time tube is created?
+        #       if so, i suggest pre-load it
         self.image = pygame.image.load('game/sprites/tube_1pos.bmp')
         self.rect = self.image.get_rect()
         self.rect.centerx = center
