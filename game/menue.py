@@ -6,5 +6,7 @@ class Menue(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('game/sprites/welcum.bmp')
+        
+        # Alex: get what?
         self.rect = self.image.get_rect()
         self.rect.centerx = params.WIDTH / 2
