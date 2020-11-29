@@ -5,8 +5,7 @@ import pygame
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((50, 40))
-        self.image.fill(colors.GREEN)
+        self.image = pygame.image.load('game/sprites/birb.bmp')
         self.rect = self.image.get_rect()
         self.rect.centerx = params.WIDTH / 2
         self.rect.bottom = params.HEIGHT - 10
