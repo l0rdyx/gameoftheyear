@@ -21,24 +21,11 @@ class Player(pygame.sprite.Sprite):
             self.speedx += 0.001
         else:
             self.speedx = 0
-        self.speedy = 5
+        self.speedy = 4
         keystate = pygame.key.get_pressed()
-        if keystate[pygame.K_LEFT]:
-            self.flag_left = True
-            self.flag_right = False
-            self.speedx = -8
         if keystate[pygame.K_SPACE]:
-            self.speedy = -8
-        if keystate[pygame.K_RIGHT]:
-            self.flag_left = False
-            self.flag_right = True
-            self.speedx = 8
+            self.speedy = -4
         self.rect.y += self.speedy
-        self.rect.x += self.speedx
-        if self.rect.right > params.WIDTH:
-            self.rect.right = params.WIDTH
-        if self.rect.left < 0:
-            self.rect.left = 0
         if self.rect.bottom > params.HEIGHT:
             self.rect.bottom = params.HEIGHT
         if self.rect.top <= 0:
