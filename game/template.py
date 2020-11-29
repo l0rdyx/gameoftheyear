@@ -11,6 +11,7 @@ def run():
     clock = pygame.time.Clock()
     all_sprites = pygame.sprite.Group()
     menu = menue.Menue()
+    mobs = pygame.sprite.Group()
     all_sprites.add(menu)
     all_sprites.draw(screen)
     pygame.display.flip()
@@ -25,11 +26,16 @@ def run():
         clock.tick(15)
     running = True
     print(params.WIDTH // 50)
-    tubes = [tube.Tube(200 * (i + params.WIDTH // 200 // 2), random.randint(0, 350)) for i in range(params.WIDTH // 200)]
-    print(tubes)
+    tubes = [tube.Tube(params.WIDTH + 200 * i, random.randint(0, 350)) for i in range(params.WIDTH // 200)]
+    l = len(tubes)
+    for i in range(l):
+        top_tube = tube.Tube(tubes[i].rect.centerx, tubes[i].rect.top - 120 - params.HEIGHT)
+        tubes.append(top_tube)
     for s in tubes:
         all_sprites.add(s)
-        all_sprites.add(tube.Tube(s.rect.centerx, s.rect.top - 120 - params.HEIGHT))
+        top_tube = tube.Tube(s.rect.centerx, s.rect.top - 120 - params.HEIGHT)
+        all_sprites.add(top_tube)
+        mobs.add(s)
     player_1 = player.Player()
     all_sprites.add(player_1)
 
@@ -40,6 +46,9 @@ def run():
                 running = False
         # Обновление
         all_sprites.update()
+        hits = pygame.sprite.spritecollide(player_1 , mobs, False)
+        if hits:
+            running = False
         # Рендеринг
         screen.fill(colors.BLACK)
         all_sprites.draw(screen)

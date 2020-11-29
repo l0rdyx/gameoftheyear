@@ -14,7 +14,7 @@ class Tube(pygame.sprite.Sprite):
     def update(self):
         if self.rect.left < 0:
             self.rect.left = params.WIDTH
-        self.rect.x -= 4
+        self.rect.x -= 2
         self.eye_pos_counter += 1
         if self.eye_pos_counter >= 10:
             self.image = pygame.image.load('game/sprites/tube_2pos.bmp')
