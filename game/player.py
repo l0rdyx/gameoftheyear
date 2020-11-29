@@ -7,6 +7,8 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('game/sprites/birb.bmp')
         self.rect = self.image.get_rect()
+        
+        # Alex: magical constants...
         self.rect.centerx = 100
         self.rect.bottom = params.HEIGHT // 2
         self.speedx = 0
@@ -15,12 +17,14 @@ class Player(pygame.sprite.Sprite):
         self.flag_right = False
 
     def update(self):
+        # Alex: and here
         if self.flag_left:
             self.speedx -= 0.001
         elif self.flag_right:
             self.speedx += 0.001
         else:
             self.speedx = 0
+        # oooohhbrbrbr
         self.speedy = 4
         keystate = pygame.key.get_pressed()
         if keystate[pygame.K_SPACE]:
