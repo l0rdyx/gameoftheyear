@@ -41,9 +41,13 @@ def run():
 
     while running:
         clock.tick(params.FPS)
+        
+        # wow, this one cycles at every game tick?
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+        # Why russian
+        
         # Обновление
         all_sprites.update()
         hits = pygame.sprite.spritecollide(player_1 , mobs, False)
