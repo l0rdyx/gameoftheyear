@@ -13,19 +13,28 @@ class Tube(pygame.sprite.Sprite):
         self.pair = None
 
     def update(self):
+        # score if player flying by
+        if self.rect.right == 100 and self.pair:
+            params.score += 1
+
+        # if tube riches left side of screen, respawning it at the right side with random position
         if self.rect.left < 0:
+            # cause we need to respawn both tubes at the same time
             if self.pair:
                 new_y = random.randint(0, 350)
                 self.rect.bottom = params.HEIGHT + new_y
                 print(self.pair.rect.top)
                 self.pair.rect.bottom = self.rect.top - 120
-                self.rect.left = params.WIDTH
-                self.pair.rect.left = params.WIDTH
+                self.rect.left = params.WIDTH - 100
+                self.pair.rect.left = params.WIDTH - 100
             print(self.pair.rect.top, ' ', self.pair.rect.centery, ' ', self.pair.rect.bottom)
             print(self.rect.top, ' ', self.rect.centery, ' ', self.rect.bottom)
-            print('очко')
-        self.rect.x -= 10
+
+        # moving tube
+        self.rect.x += params.tubes_speed
         self.eye_pos_counter += 1
+
+        # changing eye style every 10 ticks
         if self.eye_pos_counter >= 10:
             self.image = pygame.image.load('game/sprites/tube_2pos.bmp')
             self.eye_pos_counter = 0

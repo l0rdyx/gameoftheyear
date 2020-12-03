@@ -15,17 +15,14 @@ class Player(pygame.sprite.Sprite):
         self.flag_right = False
 
     def update(self):
-        if self.flag_left:
-            self.speedx -= 0.001
-        elif self.flag_right:
-            self.speedx += 0.001
-        else:
-            self.speedx = 0
-        self.speedy = 4
-        keystate = pygame.key.get_pressed()
-        if keystate[pygame.K_SPACE]:
-            self.speedy = -4
+        # updating speed if space pressed
+        self.speedy = params.default_speed
+        key_state = pygame.key.get_pressed()
+        if key_state[pygame.K_SPACE]:
+            self.speedy = - params.default_speed
         self.rect.y += self.speedy
+
+        # not letting fall or fly away
         if self.rect.bottom > params.HEIGHT:
             self.rect.bottom = params.HEIGHT
         if self.rect.top <= 0:
