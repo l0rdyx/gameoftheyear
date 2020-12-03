@@ -5,7 +5,7 @@ import pygame
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load('game/sprites/birb.bmp')
+        self.image = pygame.image.load('game/sprites/tarantino.bmp')
         self.rect = self.image.get_rect()
         self.rect.centerx = 100
         self.rect.bottom = params.HEIGHT // 2
