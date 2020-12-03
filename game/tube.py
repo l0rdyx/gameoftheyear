@@ -25,8 +25,8 @@ class Tube(pygame.sprite.Sprite):
                 self.rect.bottom = params.HEIGHT + new_y
                 print(self.pair.rect.top)
                 self.pair.rect.bottom = self.rect.top - 120
-                self.rect.left = params.WIDTH - 100
-                self.pair.rect.left = params.WIDTH - 100
+                self.rect.left = params.WIDTH
+                self.pair.rect.left = params.WIDTH
             print(self.pair.rect.top, ' ', self.pair.rect.centery, ' ', self.pair.rect.bottom)
             print(self.rect.top, ' ', self.rect.centery, ' ', self.rect.bottom)
 

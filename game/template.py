@@ -81,6 +81,7 @@ def run():
         # flipping rendered screen
         pygame.display.flip()
 
+    # adding ending menu
     ending = menue.Menue(params.outcome_background)
     mens.add(ending)
 
@@ -94,6 +95,6 @@ def run():
         font = pygame.font.Font(None, 74)
         text = font.render('You scored: ' + str(params.score), 1, colors.BLUE)
         screen.blit(text, (params.WIDTH // 2, 10))
-
         pygame.display.flip()
+
     pygame.quit()
