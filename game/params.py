@@ -8,3 +8,5 @@ tubes_amount = WIDTH // dist
 default_speed = 4
 tubes_speed = -5
 score = 0
+welcome_background = 'game/sprites/welcum.bmp'
+outcome_background = 'game/sprites/gg.bmp'

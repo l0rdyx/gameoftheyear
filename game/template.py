@@ -12,13 +12,14 @@ def run():
     clock = pygame.time.Clock()
 
     # init sprite groups and menue object
+    mens = pygame.sprite.Group()
     all_sprites = pygame.sprite.Group()
-    menu = menue.Menue()
+    menu = menue.Menue(params.welcome_background)
     mobs = pygame.sprite.Group()
 
     # adding menue and drawing it
-    all_sprites.add(menu)
-    all_sprites.draw(screen)
+    mens.add(menu)
+    mens.draw(screen)
     pygame.display.flip()
 
     # menue running, if enter pressed - cont
@@ -28,7 +29,7 @@ def run():
         for event in pygame.event.get():
             if event.type == pygame or key_state[pygame.K_RETURN]:
                 running = False
-                all_sprites.remove(menu)
+                mens.remove(menu)
         pygame.display.update()
         clock.tick(15)
 
@@ -80,4 +81,19 @@ def run():
         # flipping rendered screen
         pygame.display.flip()
 
+    ending = menue.Menue(params.outcome_background)
+    mens.add(ending)
+
+    running = True
+    while running:
+        clock.tick(params.FPS)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+        mens.draw(screen)
+        font = pygame.font.Font(None, 74)
+        text = font.render('You scored: ' + str(params.score), 1, colors.BLUE)
+        screen.blit(text, (params.WIDTH // 2, 10))
+
+        pygame.display.flip()
     pygame.quit()
